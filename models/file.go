@@ -1,8 +1,13 @@
 package models
 
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
+
 type File struct {
-	ID   int64  `json:"id" binding:"required"`
-	name string `json:"name" binding:"required"`
-	PIN  int64  `json:"pin" binding:"required"`
-	url  string `json:"url" binding:"required"`
+	Id        primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty" binding:"required"`
+	Name      string             `json:"name" bson:"name,omitempty" binding:"required"`
+	Pin       string             `json:"pin" bson:"pin,omitempty" binding:"required"`
+	Url       string             `json:"url" bson:"url,omitempty" binding:"required"`
+	CreatedAt int64              `json:"createdAt" bson:"createdAt,omitempty" binding:"required"`
 }

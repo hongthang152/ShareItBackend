@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    env_file:
+     - .env
+    ports:
+     - "8000:8000"
+    environment:
+     - MONGO_URL=${MONGO_URL}
+     - AZURE_STORAGE_ACCOUNT=${AZURE_STORAGE_ACCOUNT}
+     - AZURE_STORAGE_ACCESS_KEY=${AZURE_STORAGE_ACCESS_KEY}
+     - CONTAINER_NAME=${CONTAINER_NAME}
+    image: shareit.azurecr.io/share-it:latest

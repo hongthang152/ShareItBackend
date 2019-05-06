@@ -1,0 +1,20 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: docker login shareit.azurecr.io --username=ShareIt --password==FD7AEJVHsiT9DMCy9MaMaydGZnDTTDY
+  displayName: 'Log into Docker Azure Registry'
+
+- script: docker build -t shareit.azurecr.io/share-it:latest .
+  displayName: 'Docker build'
+
+- script: docker push shareit.azurecr.io/share-it:latest
+  displayName: 'Docker push to Azure registry'
