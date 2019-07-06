@@ -1,7 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: > 
-    ['build', '-t', '--build-arg',
+  args: ['build', '-t', '--build-arg',
     'AZURE_STORAGE_ACCESS_KEY', '$_AZURE_STORAGE_ACCESS_KEY',
     'AZURE_STORAGE_ACCOUNT', '$_AZURE_STORAGE_ACCOUNT',
     'CONTAINER_NAME', '$_CONTAINER_NAME',
