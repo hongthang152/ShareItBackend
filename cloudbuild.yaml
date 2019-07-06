@@ -1,0 +1,20 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: > 
+    ['build', '-t', '--build-arg',
+    'AZURE_STORAGE_ACCESS_KEY', '$_AZURE_STORAGE_ACCESS_KEY',
+    'AZURE_STORAGE_ACCOUNT', '$_AZURE_STORAGE_ACCOUNT',
+    'CONTAINER_NAME', '$_CONTAINER_NAME',
+    'FRONTEND_URL', '$_FRONTEND_URL',
+    'MONGO_URL', '$_MONGO_URL',
+    'gcr.io/$PROJECT_ID/share-it:$SHORT_SHA', '.']
+  id: 'Building Docker image'
+  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','gcr.io/$PROJECT_ID/share-it:$SHORT_SHA']
+  id: 'Pushing Docker image'
+
+# - name: 'gcr.io/cloud-builders/kubectl'
+#   id: 'Deploying to Google Cloud Kubernetes'
+
+# images: ['gcr.io/$PROJECT_ID/share-it']
