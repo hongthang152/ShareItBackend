@@ -14,9 +14,7 @@ steps:
   id: 'Pushing Docker image'
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['gcloud',
-  'container',
-  'clusters',
+  args: ['container','clusters',
   'get-credentials','${_CLUSTER_NAME}',
   '--zone','${_CLOUDSDK_COMPUTE_ZONE}',
   '--project','${PROJECT_ID}']
