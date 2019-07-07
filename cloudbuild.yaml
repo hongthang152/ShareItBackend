@@ -19,8 +19,7 @@ steps:
     '--role=roles/container.developer']
   id: 'Setting up Google Cloud Credentials'
   env:
-  - 'PROJECT=$(gcloud projects describe \
-    $(gcloud config get-value core/project -q) --format='get(projectNumber)')'
+  - 'PROJECT=$(gcloud projects describe $(gcloud config get-value core/project -q) --format='get(projectNumber)')
 
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply','-f','k8s/']
