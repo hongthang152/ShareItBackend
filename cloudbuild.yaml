@@ -13,11 +13,11 @@ steps:
   args: ['push','gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}']
   id: 'Pushing Docker image'
 
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['projects','add-iam-policy-binding','$PROJECT_ID',
-    '--member=user:$_USER_EMAIL',
-    '--role=roles/owner']
-  id: 'Setting up Google Cloud Credentials'
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['projects','add-iam-policy-binding','$PROJECT_ID',
+#     '--member=user:$_USER_EMAIL',
+#     '--role=roles/owner']
+#   id: 'Setting up Google Cloud Credentials'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply','-f','k8s/']
