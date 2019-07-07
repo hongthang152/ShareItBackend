@@ -18,8 +18,8 @@ spec:
       - image: gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
         name: web
         ports:
-        - containerPort: ${CONTAINER_PORT}
+        - containerPort: ${_CONTAINER_PORT}
         livenessProbe:
           httpGet:
             path: /
-            port: ${CONTAINER_PORT}
+            port: ${_CONTAINER_PORT}

@@ -10,11 +10,16 @@ steps:
   id: 'Building Docker image'
   
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/${PROJECT_ID}/${PROJECT_NAME}:${SHORT_SHA}']
+  args: ['push','gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}']
   id: 'Pushing Docker image'
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: [gcloud,container,clusters,get-credentials,${_CLUSTER_NAME},--zone,${_CLOUDSDK_COMPUTE_ZONE},--project,${PROJECT_ID}]
+  args: ['gcloud',
+  'container',
+  'clusters',
+  'get-credentials','${_CLUSTER_NAME}'',
+  '--zone','${_CLOUDSDK_COMPUTE_ZONE}',
+  '--project','${PROJECT_ID}']
   id: 'Setting up Google Cloud Credentials'
 
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -27,7 +32,7 @@ steps:
   - image
   - deployment 
   - ${_PROJECT_NAME}
-  - gcr.io/${PROJECT_ID}/${PROJECT_NAME}:${SHORT_SHA}
+  - gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
 # images: ['gcr.io/$PROJECT_ID/share-it']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
