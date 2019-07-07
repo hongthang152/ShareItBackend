@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: ${_PROJECT_NAME}
+  name: ${_PROJECT_NAME}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: ${_PROJECT_NAME}
+  template:
+    metadata:
+      labels:
+        run: ${_PROJECT_NAME}
+    spec:
+      containers:
+      - image: gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
+        name: web
+        ports:
+        - containerPort: ${CONTAINER_PORT}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: ${CONTAINER_PORT}
