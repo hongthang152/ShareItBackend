@@ -17,6 +17,10 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply','-f','k8s/']
   id: 'Setting up Google Cloud Kubernetes Deployment'
+  env:
+  - 'CLOUDSDK_COMPUTE_REGION=$_CLOUDSDK_COMPUTE_REGION'
+  - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
