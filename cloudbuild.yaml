@@ -1,15 +1,15 @@
 steps:
-- name: 'gcr.io/$PROJECT_ID/envsubst'
-  args: ['/k8s/deployment.yml', '/k8s/deployment.yml']
-  id: 'Substituting deployment.yml environment variables'
+- name: 'ubuntu'
+  args: ['bash', './scripts/preprocess.bash']
+  id: 'Substituting yml files with environment variables'
 
-- name: 'gcr.io/$PROJECT_ID/envsubst'
-  args: ['/k8s/ingress.yml', '/k8s/ingress.yml']
-  id: 'Substituting ingress.yml environment variables' 
+# - name: 'gcr.io/$PROJECT_ID/envsubst'
+#   args: ['/k8s/ingress.yml', '/k8s/ingress.yml']
+#   id: 'Substituting ingress.yml environment variables' 
 
-- name: 'gcr.io/$PROJECT_ID/envsubst'
-  args: ['/k8s/service.yml', '/k8s/service.yml']
-  id: 'Substituting service.yml environment variables'
+# - name: 'gcr.io/$PROJECT_ID/envsubst'
+#   args: ['/k8s/service.yml', '/k8s/service.yml']
+#   id: 'Substituting service.yml environment variables'
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_PROJECT_NAME}:$SHORT_SHA',
