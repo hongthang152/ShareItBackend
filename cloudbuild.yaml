@@ -13,12 +13,12 @@ steps:
   args: ['push','gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}']
   id: 'Pushing Docker image'
 
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['container','clusters',
-  'get-credentials','${_CLUSTER_NAME}',
-  '--zone','${_CLOUDSDK_COMPUTE_ZONE}',
-  '--project','${PROJECT_ID}']
-  id: 'Setting up Google Cloud Credentials'
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['container','clusters',
+#   'get-credentials','${_CLUSTER_NAME}',
+#   '--zone','${_CLOUDSDK_COMPUTE_ZONE}',
+#   '--project','${PROJECT_ID}']
+#   id: 'Setting up Google Cloud Credentials'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply','-f','k8s/']
@@ -31,7 +31,7 @@ steps:
   - deployment 
   - ${_PROJECT_NAME}
   - gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
-# images: ['gcr.io/$PROJECT_ID/share-it']
+  id: 'Deploying to Kubernetes'
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
     - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
