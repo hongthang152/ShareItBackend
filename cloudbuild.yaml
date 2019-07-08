@@ -32,7 +32,7 @@ steps:
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
       for filename in ./k8s/*.yml; do
-          envsubst < "${filename}" > "${filename}"
+          envsubst < "${filename}" > "${filename}.tmp" && mv ${filename}.tmp ${filename}
           cat ${filename}
       done
   env:
