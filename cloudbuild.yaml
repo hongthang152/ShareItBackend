@@ -1,5 +1,5 @@
 steps:
-- name: 'ubuntu'
+- name: 'supinf/envsubst'
   args: ['bash', './scripts/preprocess.bash']
   id: 'Substituting yml files with environment variables'
 
