@@ -2,6 +2,11 @@ steps:
 - name: 'ubuntu:trusty'
   args: ['bash', './scripts/preprocess.bash']
   id: 'Substituting yml files with environment variables'
+  env:
+  - '_PROJECT_NAME=${_PROJECT_NAME}'
+  - 'PROJECT_ID=${PROJECT_ID}'
+  - 'SHORT_SHA=${SHORT_SHA}'
+  - '_CONTAINER_PORT=${_CONTAINER_PORT}'
 
 # - name: 'gcr.io/$PROJECT_ID/envsubst'
 #   args: ['/k8s/ingress.yml', '/k8s/ingress.yml']
