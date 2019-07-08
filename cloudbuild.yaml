@@ -1,13 +1,4 @@
 steps:
-- name: 'ubuntu:trusty'
-  args: ['bash', './scripts/preprocess.bash']
-  id: 'Substituting yml files with environment variables'
-  env:
-  - '_PROJECT_NAME=${_PROJECT_NAME}'
-  - 'PROJECT_ID=${PROJECT_ID}'
-  - 'SHORT_SHA=${SHORT_SHA}'
-  - '_CONTAINER_PORT=${_CONTAINER_PORT}'
-
 # - name: 'gcr.io/$PROJECT_ID/envsubst'
 #   args: ['/k8s/ingress.yml', '/k8s/ingress.yml']
 #   id: 'Substituting ingress.yml environment variables' 
@@ -30,11 +21,25 @@ steps:
   args: ['push','gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}']
   id: 'Pushing Docker image'
 
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args: ['projects','add-iam-policy-binding','$PROJECT_ID',
-#     '--member=user:$_USER_EMAIL',
-#     '--role=roles/owner']
-#   id: 'Setting up Google Cloud Credentials'
+- name: 'ubuntu'
+  id: 'Substituting yml files with environment variables'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - 
+    apt-get update \
+    && apt-get -y install gettext-base \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+    for filename in ./k8s/*.yml; do
+        envsubst < "${filename}" > "${filename}"
+    done
+  env:
+  - '_PROJECT_NAME=${_PROJECT_NAME}'
+  - 'PROJECT_ID=${PROJECT_ID}'
+  - 'SHORT_SHA=${SHORT_SHA}'
+  - '_CONTAINER_PORT=${_CONTAINER_PORT}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply','-f','k8s/']
