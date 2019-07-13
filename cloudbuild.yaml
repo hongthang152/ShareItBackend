@@ -45,7 +45,7 @@ steps:
   - set
   - image
   - deployment/${_PROJECT_NAME}
-  - gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
+  - ${_PROJECT_NAME}=gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
   id: 'Deploying to Kubernetes'
   env:
     - 'CLOUDSDK_COMPUTE_REGION=$_CLOUDSDK_COMPUTE_REGION'
