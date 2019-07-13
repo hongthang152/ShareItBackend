@@ -44,8 +44,7 @@ steps:
   args:
   - set
   - image
-  - deployment 
-  - ${_PROJECT_NAME}
+  - deployment/${_PROJECT_NAME}
   - gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
   id: 'Deploying to Kubernetes'
   env:
