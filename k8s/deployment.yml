@@ -23,3 +23,29 @@ spec:
           httpGet:
             path: /
             port: ${_CONTAINER_PORT}
+        env:
+        - name: AZURE_STORAGE_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: azure-credential
+              key: AZURE_STORAGE_ACCESS_KEY
+        - name: AZURE_STORAGE_ACCOUNT
+          valueFrom:
+            secretKeyRef:
+              name: azure-credential
+              key: AZURE_STORAGE_ACCOUNT
+        - name: CONTAINER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: azure-credential
+              key: CONTAINER_NAME
+        - name: FRONTEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: environment-variables
+              key: FRONTEND_URL
+        - name: MONGO_URL
+          valueFrom:
+            secretKeyRef:
+              name: environment-variables
+              key: MONGO_URL
