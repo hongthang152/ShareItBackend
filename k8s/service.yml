@@ -8,6 +8,5 @@ spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
-    nodePort: 32131
     port: 80
     targetPort: ${_CONTAINER_PORT}
