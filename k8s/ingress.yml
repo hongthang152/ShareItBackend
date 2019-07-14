@@ -5,11 +5,14 @@ metadata:
   # labels:
   #   last_updated: 1
 spec:
-  rules:
-  - host: www.shareit.works
-    http:
-      paths:
-      - path: /*
-        backend:
-          serviceName: ${_PROJECT_NAME}
-          servicePort: 80
+  backend:
+    serviceName: ${_PROJECT_NAME}
+    servicePort: 80
+  # rules:
+  # - host: www.shareit.works
+  #   http:
+  #     paths:
+  #     - path: /*
+  #       backend:
+  #         serviceName: ${_PROJECT_NAME}
+  #         servicePort: 80
