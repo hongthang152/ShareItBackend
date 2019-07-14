@@ -7,6 +7,7 @@ spec:
     app: ${_PROJECT_NAME}
   type: LoadBalancer
   ports:
-  - protocol: http
+  - name: http
+    protocol: TCP
     port: 80
     targetPort: ${_CONTAINER_PORT}
