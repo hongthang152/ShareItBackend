@@ -26,17 +26,17 @@ spec:
         env:
         - name: AZURE_STORAGE_ACCESS_KEY
           valueFrom:
-            secretKeyRef:
+            configMapKeyRef:
               name: azure-credential
               key: AZURE_STORAGE_ACCESS_KEY
         - name: AZURE_STORAGE_ACCOUNT
           valueFrom:
-            secretKeyRef:
+            configMapKeyRef:
               name: azure-credential
               key: AZURE_STORAGE_ACCOUNT
         - name: CONTAINER_NAME
           valueFrom:
-            secretKeyRef:
+            configMapKeyRef:
               name: azure-credential
               key: CONTAINER_NAME
         - name: FRONTEND_URL
@@ -46,6 +46,6 @@ spec:
               key: FRONTEND_URL
         - name: MONGO_URL
           valueFrom:
-            secretKeyRef:
+            configMapKeyRef:
               name: environment-variables
               key: MONGO_URL

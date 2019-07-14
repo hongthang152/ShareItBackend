@@ -40,14 +40,14 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
 
-- name: 'gcr.io/cloud-builders/kubectl'
-  args:
-  - set
-  - image
-  - deployment/${_PROJECT_NAME}
-  - ${_PROJECT_NAME}=gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
-  id: 'Deploying to Kubernetes'
-  env:
-    - 'CLOUDSDK_COMPUTE_REGION=$_CLOUDSDK_COMPUTE_REGION'
-    - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
+# - name: 'gcr.io/cloud-builders/kubectl'
+#   args:
+#   - set
+#   - image
+#   - deployment/${_PROJECT_NAME}
+#   - ${_PROJECT_NAME}=gcr.io/${PROJECT_ID}/${_PROJECT_NAME}:${SHORT_SHA}
+#   id: 'Deploying to Kubernetes'
+#   env:
+#     - 'CLOUDSDK_COMPUTE_REGION=$_CLOUDSDK_COMPUTE_REGION'
+#     - 'CLOUDSDK_COMPUTE_ZONE=$_CLOUDSDK_COMPUTE_ZONE'
+#     - 'CLOUDSDK_CONTAINER_CLUSTER=$_CLOUDSDK_CONTAINER_CLUSTER'
