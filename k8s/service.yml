@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: ${_PROJECT_NAME}
-  type: NodePort
+  type: LoadBalancer
   ports:
   - protocol: TCP
     nodePort: 32131
