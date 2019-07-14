@@ -6,7 +6,7 @@ metadata:
   #   last_updated: 1
 spec:
   rules:
-  - host: www.shareit.works
+  # - host: www.shareit.works
     http:
       paths:
       - path: /
