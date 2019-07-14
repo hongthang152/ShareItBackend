@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: ${_PROJECT_NAME}
   labels:
-    app: ${_PROJECT_NAME}
+    run: ${_PROJECT_NAME}
 spec:
   selector:
     app: ${_PROJECT_NAME}
