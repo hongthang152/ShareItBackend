@@ -6,7 +6,7 @@ metadata:
     run: ${_PROJECT_NAME}
 spec:
   selector:
-    app: ${_PROJECT_NAME}
+    run: ${_PROJECT_NAME}
   type: NodePort
   ports:
   - name: http
