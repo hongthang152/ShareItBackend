@@ -1,0 +1,17 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: share-it-secret
+spec:
+  secretName: share-it-secret
+  dnsNames:
+  - shareit.works
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - shareit.works
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
