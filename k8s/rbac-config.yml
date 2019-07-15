@@ -16,3 +16,6 @@ subjects:
   - kind: ServiceAccount
     name: tiller
     namespace: kube-system
+  - kind: User
+    name: system:serviceaccount:kube-system:default
+    
