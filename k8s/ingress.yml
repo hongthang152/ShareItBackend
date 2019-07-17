@@ -14,7 +14,7 @@ metadata:
   #   last_updated: 1
 spec:
   rules:
-  - host: shareit.works
+  - host: api.shareit.works
     http:
       paths:
       - path: /
@@ -24,4 +24,4 @@ spec:
   tls:
   - secretName: share-it-secret
     hosts:
-    - shareit.works
+    - api.shareit.works
