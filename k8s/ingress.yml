@@ -7,13 +7,19 @@ metadata:
     certmanager.k8s.io/acme-http01-edit-in-place: "true"
     kubernetes.io/ingress.class: "nginx"
     kubernetes.io/ingress.allow-http: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"\
+    nginx.ingress.kubernetes.io/rewrite-target: /
   # labels:
   #   last_updated: 1
 spec:
-  backend:
-    serviceName: ${_PROJECT_NAME}
-    servicePort: 80
+  rules:
+  - host: shareit.works
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: ${_PROJECT_NAME}
+          servicePort: 80
   tls:
   - secretName: share-it-secret
     hosts:
