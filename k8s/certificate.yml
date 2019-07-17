@@ -5,13 +5,13 @@ metadata:
 spec:
   secretName: share-it-secret
   dnsNames:
-  - api.shareit.works
+  - shareit.works
   acme:
     config:
     - http01:
         ingressClass: nginx
       domains:
-      - api.shareit.works
+      - shareit.works
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
