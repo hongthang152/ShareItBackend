@@ -3,14 +3,16 @@ kind: Ingress
 metadata:
   name: ${_PROJECT_NAME}
   annotations:
-    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
-    certmanager.k8s.io/acme-http01-edit-in-place: "true"
     kubernetes.io/ingress.class: "nginx"
-    kubernetes.io/ingress.allow-http: "true"
-    kubernetes.io/tls-acme: "true"
-    ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    # certmanager.k8s.io/acme-http01-edit-in-place: "true"
+    # kubernetes.io/ingress.class: "nginx"
+    # kubernetes.io/ingress.allow-http: "true"
+    # kubernetes.io/tls-acme: "true"
+    # ingress.kubernetes.io/ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/rewrite-target: /
   # labels:
   #   last_updated: 1
 spec:
