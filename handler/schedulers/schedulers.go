@@ -20,7 +20,7 @@ func NewFileScheduler(client *mongo.Client) *FileScheduler {
 	return &FileScheduler{
 		repo:      file.NewMongoRepository(client),
 		azService: service.NewAzureStorageService(os.Getenv("AZURE_STORAGE_ACCOUNT"), os.Getenv("AZURE_STORAGE_ACCESS_KEY"), os.Getenv("CONTAINER_NAME"), context.Background()),
-	}
+	} 
 }
 
 func (fileScheduler *FileScheduler) DeleteExpiredFiles(spec string) {
