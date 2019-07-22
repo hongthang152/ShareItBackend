@@ -35,7 +35,7 @@ func main() {
 	router.HandleFunc("/", FileHandler.CheckHealth).Methods("GET", "OPTIONS")
 
 	fileScheduler := schedulers.NewFileScheduler(client)
-	fileScheduler.DeleteExpiredFiles("0,30 * * * *")
+	fileScheduler.DeleteExpiredFiles("*/30 * * * *")
 
 	log.Println("Listening on port :8000")
 	log.Fatal(http.ListenAndServe(":8000", router))

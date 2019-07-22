@@ -38,7 +38,7 @@ func (fileHandler *FileHandler) GetFile(w http.ResponseWriter, r *http.Request) 
 	file, _ := fileHandler.repo.FetchByPIN(r.Context(), code)
 
 	if file == nil {
-		utils.RespondWithError(w, http.StatusNotFound, "Cannot find file with this PIN")
+		utils.RespondWithError(w, http.StatusNotFound, "Cannot find file with this ID")
 		return
 	}
 
@@ -57,7 +57,7 @@ func (fileHandler *FileHandler) Create(w http.ResponseWriter, r *http.Request) {
 
 	res, _ := fileHandler.repo.FetchByPIN(r.Context(), pin)
 	if res != nil {
-		utils.RespondWithError(w, http.StatusBadRequest, "Somebody has taken this PIN. Please try a different PIN.")
+		utils.RespondWithError(w, http.StatusBadRequest, "Somebody has taken this ID. Please try a different ID.")
 		return
 	}
 	_, _, url := fileHandler.azService.Upload(Buf.Bytes(), r.Context(), pin, header.Filename)
